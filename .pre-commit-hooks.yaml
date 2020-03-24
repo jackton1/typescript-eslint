@@ -3,7 +3,6 @@
     entry: eslint
     language: node
     'types': [file]
-    files: \.(ts|tsx)$
     args: []
     require_serial: false
     additional_dependencies:
