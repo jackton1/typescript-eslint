@@ -40,10 +40,10 @@ const argv = require('yargs')
   .help()
   .argv;
 
-const { filenames = [], verbose = false } = argv;
+const {filenames = [], verbose = false} = argv;
 const extensions = argv.extensions.split(',').join('|');
 const fileMatches = filenames.filter(
-  minimatch.filter(`*.+({${extensions})`, { matchBase: true }),
+  minimatch.filter(`*.+({${extensions})`, {matchBase: true}),
 );
 const shouldExecute = fileMatches.length > 0;
 
@@ -58,10 +58,12 @@ if (!shouldExecute) {
     console.log(`Running: \`npx eslint --config ${argv.config} --max-warnings=0 --cache\``);
   }
   const basePath = shell.pwd().toString();
-
+  
   shell.cd(basePath);
   
-  const child = shell.exec(`npx eslint --config ${argv.config} --max-warnings=0 --cache`, {
+  const child = shell.exec(
+    `npx eslint --config ${argv.config} --max-warnings=0 --cache ${fileMatches.join(" ")}`,
+  {
     async: true,
     verbose
   });
