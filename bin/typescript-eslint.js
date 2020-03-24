@@ -58,11 +58,12 @@ if (!shouldExecute) {
     console.log(`Running: \`npx eslint --config ${argv.config} --max-warnings=0 --cache\``);
   }
   const basePath = shell.pwd().toString();
+  process.env.PATH += (path.delimiter + path.join(__dirname, 'node_modules', '.bin'));
   
   shell.cd(basePath);
   
   const child = shell.exec(
-    `npx eslint --config ${argv.config} --max-warnings=0 --cache ${fileMatches.join(" ")}`,
+    `eslint --config ${path.join(basePath, argv.config)} --max-warnings=0 --cache ${fileMatches.join(" ")}`,
   {
     async: true,
     verbose
