@@ -56,16 +56,22 @@ if (!shouldExecute) {
 } else {
   if (verbose) {
     console.log(`Matching files found: ${fileMatches.join(", ")}`);
-    console.log(`Running: \`npx eslint --config ${argv.config} --max-warnings=0 --cache\``);
   }
   const basePath = shell.pwd().toString();
-  process.env.PATH += (path.delimiter + path.join(__dirname, 'node_modules', '.bin'));
+  const oldPwd = path.join(__dirname, '..');
+  const eslint = path.join(oldPwd, 'node_modules', '.bin', 'eslint');
+  const command = `
+    ${eslint} --config ${path.join(basePath, argv.config)} \
+     --max-warnings=0 ${fileMatches.join(" ")}
+  `;
   
   shell.cd(basePath);
   
-  const child = shell.exec(
-    `eslint --config ${path.join(basePath, argv.config)} --max-warnings=0 --cache ${fileMatches.join(" ")}`,
-  {
+  if (verbose) {
+    console.log(command);
+  }
+  
+  const child = shell.exec(command, {
     async: true,
     verbose
   });
