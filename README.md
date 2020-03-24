@@ -20,7 +20,7 @@ Add this to your `.pre-commit-config.yaml`:
 When using plugins with `typescript-eslint` you'll need to declare them under
 `additional_dependencies`. For example:
 
-    -   repo: https://github.com/pre-commit/mirrors-eslint
+    -   repo: https://github.com/jackton1/typescript-eslint
         rev: ''  # Use the sha / tag you want to point at
         hooks:
         -   id: typescript-eslint
