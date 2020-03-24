@@ -60,7 +60,7 @@ if (!shouldExecute) {
 
   shell.cd(basePath);
   
-  const child = shell.exec(`npx eslint --config ${argv.config} --max-warnings=0`, {
+  const child = shell.exec(`npx eslint --config ${argv.config} --max-warnings=0 --cache`, {
     async: true,
     verbose
   });
