@@ -1,6 +1,6 @@
 -   id: typescript-eslint
     name: typescript-eslint
-    entry: eslint
+    entry: typescript-eslint
     language: node
     'types': [file]
     args: []
