@@ -3,6 +3,7 @@
 'use strict';
 const minimatch = require('minimatch');
 const shell = require('shelljs');
+const path = require('path');
 
 const argv = require('yargs')
   .option(
