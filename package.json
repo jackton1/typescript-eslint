@@ -1,7 +1,11 @@
 {
   "name": "typescript-eslint",
   "version": "v6.6.0",
+  "main": "./bin/typescript-eslint.js",
   "description": "Typescript eslint pre-commit hook",
+  "bin": {
+    "typescript-eslint": "./bin/typescript-eslint.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jackton1/typescript-eslint.git"
