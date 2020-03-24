@@ -62,7 +62,7 @@ if (!shouldExecute) {
   const eslint = path.join(oldPwd, 'node_modules', '.bin', 'eslint');
   const command = `
     ${eslint} --config ${path.join(basePath, argv.config)} \
-     --max-warnings=0 ${fileMatches.join(" ")}
+    --resolve-plugins-relative-to ${oldPwd} --max-warnings=0 ${fileMatches.join(" ")}
   `;
   
   shell.cd(basePath);
