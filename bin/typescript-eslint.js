@@ -55,6 +55,7 @@ if (!shouldExecute) {
 } else {
   if (verbose) {
     console.log(`Matching files found: ${fileMatches.join(", ")}`);
+    console.log(`Running: \`npx eslint --config ${argv.config} --max-warnings=0 --cache\``);
   }
   const basePath = shell.pwd().toString();
 
